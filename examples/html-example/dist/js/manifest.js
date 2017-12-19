@@ -12,6 +12,11 @@
 /******/ 			}
 /******/ 			installedChunks[chunkId] = 0;
 /******/ 		}
+                /**
+                 * moduleId:key 
+                 * moreModules 模块对象
+                 * modules数组: ["JkW7":f,"fVj1":f]
+                 */
 /******/ 		for(moduleId in moreModules) {
 /******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
 /******/ 				modules[moduleId] = moreModules[moduleId];
@@ -21,6 +26,10 @@
 /******/ 		while(resolves.length) {
 /******/ 			resolves.shift()();
 /******/ 		}
+                /**
+                 * executeModules: ["JkW7"]
+                 * 主模块 “JkW7”
+                 */
 /******/ 		if(executeModules) {
 /******/ 			for(i=0; i < executeModules.length; i++) {
 /******/ 				result = __webpack_require__(__webpack_require__.s = executeModules[i]);
@@ -40,6 +49,9 @@
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
+                /**
+                 * installedModules 缓存容器
+                 */
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
