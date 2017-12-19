@@ -1,3 +1,2 @@
-function a(param) {
-    console.log(param)
-}
+var sayHelloFn = require('./test')
+sayHelloFn()
