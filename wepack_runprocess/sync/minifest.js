@@ -1,4 +1,5 @@
 (function (modules) {
+    var installedModules = {}
     window.webpackJsonp = function (chunkIds, moreModules, executeModules) {
         // moreModules['a'](module, module.exports, 0)
         // 遍历 moreModules
@@ -17,8 +18,28 @@
         return result
     }
 
-    // 定义__webpack__require__ 函数
+    /**
+     * moduleId 模块ID
+     * installedModules 缓存对象 installedModules[moduleId]
+     */
     __webpack__require__ = function(moduleId){
-        
+        // 若缓存存在，则返回exports
+        if(installedModules[moduleId]){
+            return installedModules[moduleId].exports
+        }
+
+        // 存放缓存对象到 module 中
+        // module {i: moduleId,l: false,exports: {}}
+        var module = installedModules[moduleId] = {
+            i: moduleId,
+            l: false, // false 模块未加载
+            exports: {}
+        }
+
+        modules[moduleId].call(module.exports,module,module.exports,__webpack__require__)
+        // flag 表明已经加载了
+        module.l = true
+
+        return module.exports
     }
 })([])
