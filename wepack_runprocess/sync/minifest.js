@@ -1,17 +1,17 @@
 (function (modules) {
     var installedModules = {}
     window.webpackJsonp = function (chunkIds, moreModules, executeModules) {
-        // moreModules['a'](module, module.exports, 0)
         // 遍历 moreModules
         var moduleId
-        for(moduleId in moreModules){
-            if(Object.prototype.hasOwnProperty.call(moreModules,moduleId)){
+        for (moduleId in moreModules) {
+            if (Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+                // 模块函数赋值给 modules[moduleId] ??
                 modules[moduleId] = moreModules[moduleId]
             }
         }
         // 执行入口函数
-        if(executeModules){
-            for(var i = 0;i < executeModules.length;i++){
+        if (executeModules) {
+            for (var i = 0; i < executeModules.length; i++) {
                 var result = __webpack__require__(executeModules[i])
             }
         }
